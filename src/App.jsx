@@ -5,7 +5,7 @@ export class App extends Component {
     hue: Math.floor(Math.random() * 360),
     saturation: Math.floor(Math.random() * 100),
     lightness: Math.floor(Math.random() * 100),
-    alpha: 1,
+    alpha: Math.round((Math.random() * (1 - 0) + 0) * 100) / 100,
   }
 
   /**
@@ -33,15 +33,42 @@ export class App extends Component {
     this.setState({ alpha: event.target.value })
   }
 
+  /**
+   * @param {any} event
+   */
+  handleRandomColor = event => {
+    this.setState({
+      hue: Math.floor(Math.random() * 360),
+      saturation: Math.floor(Math.random() * 100),
+      lightness: Math.floor(Math.random() * 100),
+      alpha: Math.round((Math.random() * (1 - 0) + 0) * 100) / 100,
+    })
+  }
+
   render() {
     return (
       <main>
-        <h1>Color Picker</h1>
+        <h1
+          style={{
+            textShadow: `0px 5px hsla(${this.state.hue}, ${this.state.saturation}%, ${this.state.lightness}%, ${this.state.alpha})`,
+          }}
+        >
+          Color Picker
+        </h1>
 
         <div className="first-section">
           <section className="color-box">
-            <div></div>
-            <button>Random</button>
+            <div
+              style={{
+                backgroundColor: `hsla(
+                  ${this.state.hue},
+                  ${this.state.saturation}%,
+                  ${this.state.lightness}%,
+                  ${this.state.alpha}
+                )`,
+              }}
+            ></div>
+            <button onClick={this.handleRandomColor}>Random</button>
           </section>
 
           <section className="color-ranges">
@@ -53,7 +80,7 @@ export class App extends Component {
                 value={this.state.hue}
                 onChange={this.handleChangeHue}
               ></input>
-              <input type="text"></input>
+              <p>{this.state.hue}</p>
             </div>
 
             <div>
@@ -64,7 +91,7 @@ export class App extends Component {
                 value={this.state.saturation}
                 onChange={this.handleChangeSaturation}
               ></input>
-              <input type="text"></input>
+              <p>{this.state.saturation}</p>
             </div>
 
             <div>
@@ -75,7 +102,7 @@ export class App extends Component {
                 value={this.state.lightness}
                 onChange={this.handleChangeLightness}
               ></input>
-              <input type="text"></input>
+              <p>{this.state.lightness}</p>
             </div>
 
             <div>
@@ -87,15 +114,13 @@ export class App extends Component {
                 value={this.state.alpha}
                 onChange={this.handleChangeAlpha}
               ></input>
-              <input type="text"></input>
+              <p>{this.state.alpha}</p>
             </div>
           </section>
         </div>
 
         <section className="color-info">
           <div>
-            <p>Hex</p>
-            <p>RGBA</p>
             <p>
               hsla({this.state.hue}, {this.state.saturation}%,{' '}
               {this.state.lightness}%, {this.state.alpha})
