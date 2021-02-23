@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Range } from './components/Range'
 
 export class App extends Component {
   state = {
@@ -72,50 +73,34 @@ export class App extends Component {
           </section>
 
           <section className="color-ranges">
-            <div>
-              <input
-                type="range"
-                min="0"
-                max="360"
-                value={this.state.hue}
-                onChange={this.handleChangeHue}
-              ></input>
-              <p>{this.state.hue}</p>
-            </div>
+            <Range
+              min="0"
+              max="360"
+              value={this.state.hue}
+              onChange={this.handleChangeHue}
+            />
 
-            <div>
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={this.state.saturation}
-                onChange={this.handleChangeSaturation}
-              ></input>
-              <p>{this.state.saturation}</p>
-            </div>
+            <Range
+              min="0"
+              max="100"
+              value={this.state.saturation}
+              onChange={this.handleChangeSaturation}
+            />
 
-            <div>
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={this.state.lightness}
-                onChange={this.handleChangeLightness}
-              ></input>
-              <p>{this.state.lightness}</p>
-            </div>
+            <Range
+              min="0"
+              max="100"
+              value={this.state.lightness}
+              onChange={this.handleChangeLightness}
+            />
 
-            <div>
-              <input
-                type="range"
-                min="0"
-                max="1"
-                step="0.01"
-                value={this.state.alpha}
-                onChange={this.handleChangeAlpha}
-              ></input>
-              <p>{this.state.alpha}</p>
-            </div>
+            <Range
+              min="0"
+              max="1"
+              step="0.01"
+              value={this.state.alpha}
+              onChange={this.handleChangeAlpha}
+            />
           </section>
         </div>
 
