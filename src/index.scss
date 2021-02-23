@@ -96,6 +96,11 @@ button {
   font-size: 0.9rem;
 }
 
+button:hover {
+  background-color: black;
+  color: white;
+}
+
 .first-section P {
   border: 0.1rem solid black;
   width: 2rem;
